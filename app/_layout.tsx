@@ -1,5 +1,5 @@
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { Slot } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,7 +7,12 @@ import "../global.css";
 
 export default function RootLayout() {
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    ArchivoBlack: require("../assets/fonts/ArchivoBlack-Regular.ttf"),
+    PoppinsRegular: require("../assets/fonts/Poppins-Regular.ttf"),
+    PoppinsBold: require("../assets/fonts/Poppins-Bold.ttf"),
+    PoppinsItalic: require("../assets/fonts/Poppins-Italic.ttf"),
+    PoppinsSemibold: require("../assets/fonts/Poppins-SemiBold.ttf"),
+    PoppinsSemiboldItalic: require("../assets/fonts/Poppins-SemiBoldItalic.ttf"),
   });
 
   if (!loaded) {
@@ -16,11 +21,8 @@ export default function RootLayout() {
   }
 
   return (
-    <SafeAreaView className='h-full'>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
+    <SafeAreaView className='h-full dark:bg-midnight-blue'>
+      <Slot />
       <StatusBar style="auto" />
     </SafeAreaView>
   );
